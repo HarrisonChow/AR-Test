@@ -1,6 +1,10 @@
 <template>
     <div class="card">
         <div class="card-image-wrapper">
+            <div class="overlay">
+                <button class="overlay-button">View event</button>
+            </div>
+
             <img :src="image" alt="Event image" class="card-image" />
         </div>
         <button class="dropdown-button" @click="toggleDropdown">
@@ -82,12 +86,43 @@ export default {
         height: 200px;
         overflow: hidden;
         border-radius: 8px 8px 0 0;
-    }
 
-    .card-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(31, 40, 68, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+
+            .overlay-button {
+                background-color: transparent;
+                border: 1px solid #fff;
+                border-radius: 4px;
+                padding: 10px 20px;
+                font-size: 16px;
+                color: #fff;
+                cursor: pointer;
+            }
+        }
+
+        &:hover {
+            .overlay {
+                opacity: 1;
+            }
+        }
     }
 
     .dropdown-button {
@@ -106,6 +141,7 @@ export default {
         height: 40px;
         color: #fff;
     }
+
     .dropdown-list {
         font-size: 14px;
         position: absolute;
@@ -119,27 +155,31 @@ export default {
         padding: 20px;
         width: 200px;
         z-index: 1000;
+
         &::before {
             content: "";
             position: absolute;
-            top: -6px; /* Adjust based on triangle size */
+            top: -6px;
             right: 10px;
             width: 0;
             height: 0;
             border-left: 10px solid transparent;
             border-right: 10px solid transparent;
-            border-bottom: 10px solid white; /* Same as background color */
+            border-bottom: 10px solid white;
         }
+
         li {
             padding: 12px 20px;
-            margin: 0 -20px 0 -20px;
+            margin: 0 -20px;
             cursor: pointer;
+
             &:hover {
                 background-color: #f2edff;
                 color: #7344c0;
             }
         }
     }
+
     .logo-icon {
         margin-top: -20px;
         position: relative;
