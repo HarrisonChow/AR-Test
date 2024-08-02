@@ -2,10 +2,21 @@
     <div class="card">
         <div class="card-image-wrapper">
             <img :src="image" alt="Event image" class="card-image" />
-            <button class="dropdown-button">
-                <i class="fa fa-ellipsis-v"></i>
-            </button>
         </div>
+        <button class="dropdown-button" @click="toggleDropdown">
+            <i class="fa fa-ellipsis-v"></i>
+        </button>
+        <ul v-if="isOpen" class="dropdown-list">
+            <li @click="selectOption('Create campaign')">Create campaign</li>
+            <li @click="selectOption('Import ticket sales')">
+                Import ticket sales
+            </li>
+            <li @click="selectOption('Edit event details')">
+                Edit event details
+            </li>
+            <li @click="selectOption('Merge event')">Merge event</li>
+            <li @click="selectOption('Delete event')">Delete event</li>
+        </ul>
         <img src="@/assets/ar-logo.png" class="logo-icon" alt="logo icon" />
         <h3 class="card-title">{{ title }}</h3>
         <p class="card-description">{{ location }}, {{ eventDate }}</p>
@@ -20,6 +31,20 @@ export default {
         eventDate: String,
         image: String,
     },
+    data() {
+        return {
+            isOpen: false, // Manage dropdown visibility
+        };
+    },
+    methods: {
+        toggleDropdown() {
+            this.isOpen = !this.isOpen;
+        },
+        selectOption(option) {
+            console.log(`Selected: ${option}`);
+            this.isOpen = false; // Close dropdown after selection
+        },
+    },
 };
 </script>
 
@@ -29,6 +54,7 @@ export default {
     max-width: 380px;
     border: 1px solid #dcdee4;
     border-radius: 8px;
+    position: relative;
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
@@ -79,6 +105,40 @@ export default {
         width: 40px;
         height: 40px;
         color: #fff;
+    }
+    .dropdown-list {
+        font-size: 14px;
+        position: absolute;
+        top: 40px;
+        right: 10px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        list-style: none;
+        padding: 20px;
+        width: 200px;
+        z-index: 1000;
+        &::before {
+            content: "";
+            position: absolute;
+            top: -6px; /* Adjust based on triangle size */
+            right: 10px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid white; /* Same as background color */
+        }
+        li {
+            padding: 12px 20px;
+            margin: 0 -20px 0 -20px;
+            cursor: pointer;
+            &:hover {
+                background-color: #f2edff;
+                color: #7344c0;
+            }
+        }
     }
     .logo-icon {
         margin-top: -20px;
