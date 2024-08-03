@@ -86,7 +86,7 @@ export default {
         margin-top: -16px;
         height: 200px;
         overflow: hidden;
-        border-radius: 8px 8px 0 0;
+        border-radius: 4px 4px 0 0;
 
         .card-image {
             width: 100%;

@@ -1,23 +1,27 @@
 <template>
     <div class="container">
         <div class="header">
-            <div class="actions">
-                <div class="search-container">
-                    <i class="fa fa-search search-icon"></i>
-                    <input
-                        type="text"
-                        v-model="searchQuery"
-                        placeholder="Search..."
-                        class="search-bar"
-                    />
+            <div class="header-container">
+                <h2>Events</h2>
+                <div class="actions">
+                    <div class="search-container">
+                        <i class="fa fa-search search-icon"></i>
+                        <input
+                            type="text"
+                            v-model="searchQuery"
+                            placeholder="Search..."
+                            class="search-bar"
+                        />
+                    </div>
+                    <button class="create-button" @click="createEvent">
+                        <i class="fa fa-plus-circle icon"></i>
+                        <span class="button-text">Create New Event</span>
+                        <span class="button-text-mobile">Create</span>
+                    </button>
                 </div>
-                <button class="create-button" @click="createEvent">
-                    <i class="fa fa-plus-circle icon"></i>
-                    <span class="button-text">Create New Event</span>
-                    <span class="button-text-mobile">Create</span>
-                </button>
             </div>
         </div>
+        <hr class="divider" />
         <div class="card-list">
             <CardItem
                 v-for="card in filteredCards"
@@ -140,98 +144,118 @@ export default {
         justify-content: flex-end;
         margin-bottom: 1rem;
 
-        .actions {
+        .header-container {
             display: flex;
+            width: 100%;
+            justify-content: space-between;
             align-items: center;
-            .search-container {
-                position: relative;
+            h2 {
+                font-size: 30px;
+                color: #43516b;
+            }
+            .actions {
                 display: flex;
                 align-items: center;
-                max-width: 100%;
-            }
-
-            .search-icon {
-                position: absolute;
-                left: 10px;
-                font-size: 16px;
-                color: #8e97a6;
-            }
-
-            .search-container input::placeholder {
-                color: #8e97a6;
-            }
-
-            .search-bar {
-                margin-right: 1rem;
-                padding: 16px 20px 16px 40px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                box-sizing: border-box;
-                min-width: 300px;
-                width: 100%;
-                outline: none;
-                &:focus {
-                    border-color: #2dc26a;
-                    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
-                }
-            }
-            .create-button {
-                display: flex;
-                align-items: center;
-                padding: 16px 30px;
-                background-color: #7344c0;
-                color: white;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-
-                .button-text {
-                    display: block;
-                    font-size: 14px;
+                .search-container {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    max-width: 100%;
                 }
 
-                .button-text-mobile {
-                    display: none;
+                .search-icon {
+                    position: absolute;
+                    left: 10px;
+                    font-size: 16px;
+                    color: #8e97a6;
                 }
-                .icon {
-                    margin-right: 8px;
-                    font-size: 18px;
 
-                    @media (max-width: 767px) {
-                        display: none;
+                .search-container input::placeholder {
+                    color: #8e97a6;
+                }
+
+                .search-bar {
+                    margin-right: 1rem;
+                    padding: 16px 20px 16px 40px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+                    min-width: 300px;
+                    width: 100%;
+                    outline: none;
+                    &:focus {
+                        border-color: #2dc26a;
+                        box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
                     }
                 }
-                &:hover {
-                    background-color: #592f9d;
-                }
-            }
-        }
-
-        @media (max-width: 838px) {
-            justify-content: center;
-            .actions {
-                .search-bar {
-                    width: 100%;
-                }
                 .create-button {
+                    display: flex;
+                    align-items: center;
+                    padding: 16px 30px;
+                    background-color: #7344c0;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+
                     .button-text {
-                        display: none;
+                        display: block;
+                        font-size: 14px;
                     }
 
                     .button-text-mobile {
-                        display: block;
+                        display: none;
+                    }
+                    .icon {
+                        margin-right: 8px;
+                        font-size: 18px;
+
+                        @media (max-width: 767px) {
+                            display: none;
+                        }
+                    }
+                    &:hover {
+                        background-color: #592f9d;
+                    }
+                }
+
+                @media (max-width: 838px) {
+                    justify-content: center;
+                    .search-bar {
+                        width: 100%;
+                    }
+                    .create-button {
+                        .button-text {
+                            display: none;
+                        }
+
+                        .button-text-mobile {
+                            display: block;
+                        }
+                    }
+                }
+                @media (max-width: 450px) {
+                    justify-content: center;
+                    .search-bar {
+                        min-width: auto;
+                        padding: 16px;
+                    }
+                    .search-icon {
+                        display: none;
                     }
                 }
             }
-        }
-        @media (max-width: 450px) {
-            justify-content: center;
-            .actions {
-                .search-bar {
-                    min-width: auto;
-                }
+
+            @media (max-width: 838px) {
+                display: block;
             }
         }
+    }
+
+    .divider {
+        border: 1px solid #dcdee4;
+        width: 100%;
+        margin: 30px 0;
     }
 
     .card-list {
