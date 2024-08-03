@@ -130,133 +130,122 @@ export default {
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content horizontally on mobile */
-    max-width: 1200px; /* Set maximum width */
-    margin: 0 auto; /* Center container horizontally */
-}
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 
-.header {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end; /* Align header items to the right */
-    margin-bottom: 1rem;
-
-    .actions {
+    .header {
+        width: 100%;
         display: flex;
-        align-items: center;
-        .search-container {
-            position: relative;
+        justify-content: flex-end;
+        margin-bottom: 1rem;
+
+        .actions {
             display: flex;
             align-items: center;
-            max-width: 100%; /* Adjust as needed for responsiveness */
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 10px; /* Adjust to position the icon inside the input */
-            font-size: 16px; /* Adjust the size of the icon */
-            color: #8e97a6;
-        }
-
-        .search-container input::placeholder {
-            color: #8e97a6; /* Adjust placeholder text color if needed */
-        }
-
-        .search-bar {
-            margin-right: 1rem;
-            padding: 16px 20px 16px 40px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            max-width: 200px; /* Adjust width as needed */
-        }
-        .create-button {
-            display: flex;
-            align-items: center;
-            padding: 16px 30px;
-            background-color: #7344c0;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-
-            .button-text {
-                display: block;
-                font-size: 14px;
+            .search-container {
+                position: relative;
+                display: flex;
+                align-items: center;
+                max-width: 100%;
             }
 
-            .button-text-mobile {
-                display: none;
+            .search-icon {
+                position: absolute;
+                left: 10px;
+                font-size: 16px;
+                color: #8e97a6;
             }
-            .icon {
-                margin-right: 8px; /* Adjust space between icon and text */
-                font-size: 18px; /* Adjust size of the icon */
 
-                @media (max-width: 767px) {
-                    display: none; /* Hide icon on mobile view */
+            .search-container input::placeholder {
+                color: #8e97a6;
+            }
+
+            .search-bar {
+                margin-right: 1rem;
+                padding: 16px 20px 16px 40px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                min-width: 300px;
+                width: 100%;
+                outline: none;
+                &:focus {
+                    border-color: #2dc26a;
+                    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
                 }
             }
-            &:hover {
-                background-color: #592f9d;
-            }
-        }
-    }
-}
-
-.card-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 1rem;
-
-    .card {
-        width: 100%;
-        max-width: 380px;
-        padding: 1rem;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        box-sizing: border-box;
-
-        .card-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .card-description {
-            margin-top: 0.5rem;
-            color: #555;
-        }
-    }
-}
-
-@media (max-width: 767px) {
-    .header {
-        justify-content: center; /* Center header items on mobile */
-        .actions {
-            .search-bar {
-                width: 100%;
-                margin-right: 0;
-            }
             .create-button {
-                margin-top: 0.5rem;
+                display: flex;
+                align-items: center;
+                padding: 16px 30px;
+                background-color: #7344c0;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+
                 .button-text {
-                    display: none;
+                    display: block;
+                    font-size: 14px;
                 }
 
                 .button-text-mobile {
-                    display: block;
+                    display: none;
+                }
+                .icon {
+                    margin-right: 8px;
+                    font-size: 18px;
+
+                    @media (max-width: 767px) {
+                        display: none;
+                    }
+                }
+                &:hover {
+                    background-color: #592f9d;
+                }
+            }
+        }
+
+        @media (max-width: 838px) {
+            justify-content: center;
+            .actions {
+                .search-bar {
+                    width: 100%;
+                }
+                .create-button {
+                    .button-text {
+                        display: none;
+                    }
+
+                    .button-text-mobile {
+                        display: block;
+                    }
+                }
+            }
+        }
+        @media (max-width: 450px) {
+            justify-content: center;
+            .actions {
+                .search-bar {
+                    min-width: auto;
                 }
             }
         }
     }
-}
-@media (max-width: 1220px) {
+
     .card-list {
-        justify-content: center; /* Center cards horizontally */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px;
+        @media (max-width: 838px) {
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 1248px) {
+        max-width: 800px;
     }
 }
 </style>

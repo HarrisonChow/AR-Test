@@ -61,6 +61,7 @@ export default {
     position: relative;
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 
     .card-title {
         font-size: 1.25rem;
@@ -104,7 +105,7 @@ export default {
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 1.2s ease;
             z-index: 0;
 
             .overlay-button {
@@ -115,12 +116,6 @@ export default {
                 font-size: 16px;
                 color: #fff;
                 cursor: pointer;
-            }
-        }
-
-        &:hover {
-            .overlay {
-                opacity: 1;
             }
         }
     }
@@ -141,7 +136,6 @@ export default {
         height: 40px;
         color: #fff;
     }
-
     .dropdown-list {
         font-size: 14px;
         position: absolute;
@@ -183,6 +177,19 @@ export default {
     .logo-icon {
         margin-top: -20px;
         position: relative;
+    }
+    @media (max-width: 1248px) {
+        justify-content: center;
+    }
+    @media (max-width: 450px) {
+        max-width: 300px;
+    }
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        .overlay {
+            opacity: 1;
+        }
     }
 }
 </style>
