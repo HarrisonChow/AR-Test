@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card" @mouseleave="closeDropdown">
         <div class="card-image-wrapper">
             <div class="overlay">
                 <button class="overlay-button">View event</button>
@@ -37,7 +37,7 @@ export default {
     },
     data() {
         return {
-            isOpen: false, // Manage dropdown visibility
+            isOpen: false,
         };
     },
     methods: {
@@ -46,7 +46,11 @@ export default {
         },
         selectOption(option) {
             console.log(`Selected: ${option}`);
-            this.isOpen = false; // Close dropdown after selection
+            this.isOpen = false;
+        },
+
+        closeDropdown() {
+            this.isOpen = false;
         },
     },
 };
@@ -62,6 +66,7 @@ export default {
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+    transition: box-shadow 0.3s ease;
 
     .card-title {
         font-size: 1.25rem;
@@ -136,6 +141,7 @@ export default {
         height: 40px;
         color: #fff;
     }
+
     .dropdown-list {
         font-size: 14px;
         position: absolute;
@@ -178,18 +184,22 @@ export default {
         margin-top: -20px;
         position: relative;
     }
-    @media (max-width: 1248px) {
-        justify-content: center;
-    }
-    @media (max-width: 450px) {
-        max-width: 300px;
-    }
+
     &:hover {
         cursor: pointer;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+
         .overlay {
             opacity: 1;
         }
+    }
+
+    @media (max-width: 1248px) {
+        justify-content: center;
+    }
+
+    @media (max-width: 450px) {
+        max-width: 300px;
     }
 }
 </style>
