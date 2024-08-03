@@ -1,0 +1,55 @@
+puzzle 2 
+
+run()
+  .then(function () {
+    runAnotherFunction();
+  })
+  .then(handler);
+
+Answer:
+
+run
+|-----------------|
+                  runAnotherFunction()
+                  |---|
+                       handler(undefined)
+                       |--------------|
+--------------------------------------------------------> (time)
+
+
+
+
+puzzle 3
+
+run()
+  .then(runAnotherFunction())
+  .then(handler);
+
+
+Answer:
+
+run
+|-----------------|
+                  runAnotherFunction
+                  |------------------|
+                  handler(undefined)
+                  |------------------|
+--------------------------------------------------------> (time)
+
+
+
+puzzzle 4
+
+run()
+  .then(runAnotherFunction)
+  .then(handler);
+
+Answer:
+
+run
+|-----------------|
+                  runAnotherFunction
+                  |------------------|
+                                     handler
+                                     |------------------|
+--------------------------------------------------------> (time)
