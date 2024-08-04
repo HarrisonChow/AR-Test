@@ -77,6 +77,7 @@ export default {
         overflow: hidden;
         text-overflow: ellipsis;
         margin-bottom: 0.5rem;
+        font-family: "Avenir", sans-serif;
     }
 
     .card-description {

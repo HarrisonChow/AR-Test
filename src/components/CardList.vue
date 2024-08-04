@@ -135,14 +135,13 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1230px;
     margin: 0 auto;
 
     .header {
         width: 100%;
         display: flex;
         justify-content: flex-end;
-        margin-bottom: 1rem;
 
         .header-container {
             display: flex;
@@ -152,6 +151,8 @@ export default {
             h2 {
                 font-size: 30px;
                 color: #43516b;
+                margin: 0;
+                font-family: "Avenir", sans-serif;
             }
             .actions {
                 display: flex;
@@ -183,6 +184,8 @@ export default {
                     min-width: 300px;
                     width: 100%;
                     outline: none;
+                    font-size: 14px;
+                    font-family: "Avenir", sans-serif;
                     &:focus {
                         border-color: #2dc26a;
                         box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
@@ -201,10 +204,13 @@ export default {
                     .button-text {
                         display: block;
                         font-size: 14px;
+                        font-family: "Avenir", sans-serif;
                     }
 
                     .button-text-mobile {
                         display: none;
+                        font-size: 14px;
+                        font-family: "Avenir", sans-serif;
                     }
                     .icon {
                         margin-right: 8px;
@@ -219,7 +225,7 @@ export default {
                     }
                 }
 
-                @media (max-width: 838px) {
+                @media (max-width: 852px) {
                     justify-content: center;
                     .search-bar {
                         width: 100%;
@@ -232,6 +238,9 @@ export default {
                         .button-text-mobile {
                             display: block;
                         }
+                    }
+                    .search-container {
+                        width: 100%;
                     }
                 }
                 @media (max-width: 450px) {
@@ -246,8 +255,16 @@ export default {
                 }
             }
 
-            @media (max-width: 838px) {
+            @media (max-width: 852px) {
                 display: block;
+                h2 {
+                    margin-bottom: 26px;
+                }
+            }
+            @media (max-width: 450px) {
+                h2 {
+                    margin-bottom: 20px;
+                }
             }
         }
     }
@@ -255,21 +272,24 @@ export default {
     .divider {
         border: 1px solid #dcdee4;
         width: 100%;
-        margin: 30px 0;
+        margin: 33px 0;
     }
 
     .card-list {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        gap: 30px;
-        @media (max-width: 838px) {
+        gap: 31px 45px;
+        @media (max-width: 852px) {
             justify-content: center;
+        }
+        @media (max-width: 450px) {
+            gap: 25px;
         }
     }
 
-    @media (max-width: 1248px) {
-        max-width: 800px;
+    @media (max-width: 1278px) {
+        max-width: 805px;
     }
 }
 </style>
